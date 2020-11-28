@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Danyo : MonoBehaviour
 {
     //Camara principal de la escena
     private Camera camera_;
     //Contador para empezar a infligir daño
-    private float counter;
+    private float counter;  
     //Cantidad de daño acumulada
     private float daño;
 
@@ -21,16 +22,16 @@ public class Danyo : MonoBehaviour
 
     private void Update()
     {
-        //Pierde un punto de daño por segundo
+        //Cambia de escena y finaliza el juego
+        if (daño >= 1.0f) {
+            SceneManager.LoadScene("GameOver");
+        }
+
+        //Pierde un 1% de daño por segundo
         if (daño > 0.0f) {
             daño -= 0.01f * Time.deltaTime;
             camera_.backgroundColor = new Color(daño, daño, daño);
         }
-
-        if (daño >= 1.0f) {
-            //Finaliza escena
-        }
-
     }
 
     /// <summary>

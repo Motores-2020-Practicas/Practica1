@@ -2,43 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
-{
+public class Spawner : MonoBehaviour {
+    //Prefab del GO a generar
+    public GameObject letra;
+
     //Tiempo mínimo del spawn
     public float minSpawnRate;
     //Tiempo máximo del spawn
     public float maxSpawnRate;
-    float timeToCreate;
+
     //Posicion y del Spawner
     float pos_y;
-    //Prefab del GO a generar
-    public GameObject letra;
     //Limite derecho del objeto
     float maxBound;
     //Limite izquierdo del objeto
     float minBound;
 
-    void Start()
-    {
+    void Start() {
         pos_y = transform.position.y;
-        timeToCreate = Random.Range(minSpawnRate, maxSpawnRate);
+        Invoke("SpawnObject", Random.Range(minSpawnRate, maxSpawnRate + 1));
         maxBound = GetComponent<MeshRenderer>().bounds.max.x;
         minBound = GetComponent<MeshRenderer>().bounds.min.x;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (timeToCreate <= 0) {
-            //Nueva posición random del objeto.
-            Vector3 position = new Vector3(Random.Range(minBound, maxBound), pos_y, 0.0f);
-            //Genera el objeto random
-            Instantiate<GameObject>(letra, position, Quaternion.identity);
-            //Reseteo del tiempo de creación
-            timeToCreate = Random.Range(minSpawnRate, maxSpawnRate);
-        }
+    //Crea el objeto nuevo y prepara el siguiente
+    void SpawnObject() {
+        Invoke("SpawnObject", Random.Range(minSpawnRate, maxSpawnRate + 1));
 
-        //Timer
-        timeToCreate -= Time.deltaTime;
+        //Nueva posición random del objeto.
+        Vector2 posicion = new Vector2(Random.Range(minBound, maxBound + 0.1f), pos_y);
+
+        Instantiate(letra, posicion, Quaternion.identity);
     }
 }
