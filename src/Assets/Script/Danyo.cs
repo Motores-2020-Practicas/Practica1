@@ -8,7 +8,7 @@ public class Danyo : MonoBehaviour
     //Camara principal de la escena
     private Camera camera_;
     //Contador para empezar a infligir daño
-    private float counter;  
+    private float cont;  
     //Cantidad de daño acumulada
     private float daño;
 
@@ -16,7 +16,7 @@ public class Danyo : MonoBehaviour
     {
         camera_ = Camera.main;
         camera_.backgroundColor = new Color(0.0f, 0.0f, 0.0f);
-        counter = 3.0f;
+        cont = 3.0f;
         daño = 0.0f;
     }
 
@@ -24,10 +24,10 @@ public class Danyo : MonoBehaviour
     {
         //Cambia de escena y finaliza el juego
         if (daño >= 1.0f) {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene(2);
         }
 
-        //Pierde un 1% de daño por segundo
+        //Pierde un 1% de daño por segundo = Gana 1% de vida por segundo = Se vuelve negro el fondo 1% por segundo
         if (daño > 0.0f) {
             daño -= 0.01f * Time.deltaTime;
             camera_.backgroundColor = new Color(daño, daño, daño);
@@ -39,12 +39,13 @@ public class Danyo : MonoBehaviour
     ///haciéndose cada vez más blanco
     /// </summary>
     public void dealDamage() {
-        if (counter == 0)
+        if (cont == 0)
         {
             daño += 0.1f;
-            if (daño >= 1.0f) daño = 1.0f;
+            //Por si se supera el límite de 1.0f
+            if (daño > 1.0f) daño = 1.0f;
             camera_.backgroundColor = new Color(daño, daño, daño);
         }
-        else counter--;
+        else cont--;
     }
 }

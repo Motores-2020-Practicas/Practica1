@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Posicion x de la pala, asi se evita llamar dos veces a transform.position.x
+        //Posicion x de la pala
         float pos_x = transform.position.x;
         //Velocidad a la que se moverá la pala. Así se evita llamar transform.Translate dos veces
         float velocity = 0;

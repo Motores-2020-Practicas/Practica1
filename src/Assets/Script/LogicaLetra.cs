@@ -16,6 +16,7 @@ public class LogicaLetra : MonoBehaviour
 
         //Sirve para determinar si generar numeros o letras minúsculas,
         //dado que se siguen los caracteres del codigo ascii y estos 2 grupos no estan contiguos
+        //0 -> NUM // 1 -> Letra
         int choice = Random.Range(0, 2);
         if (choice == 0)
         {
@@ -33,11 +34,10 @@ public class LogicaLetra : MonoBehaviour
         //Se guarda el KeyCode para comprobar el input posteriormente
         key = (KeyCode)caracter;
 
-        //Si choice == 1, entonces es una letra.
-        tMesh = GetComponent<TextMesh>();
         //Se escoge un nuevo choice para saber si será mayúscula o minúscula
         //0 -> Min // 1 -> Mayus
         //En caso de ser un número, da igual si se hace upper o no, va a seguir siendo el mismo
+        tMesh = GetComponent<TextMesh>();
         choice = Random.Range(0, 2);
         if (choice == 0)
         {
@@ -47,7 +47,6 @@ public class LogicaLetra : MonoBehaviour
         {
             tMesh.text = caracter.ToString().ToUpper();
         }
-
     }
 
     // Update is called once per frame

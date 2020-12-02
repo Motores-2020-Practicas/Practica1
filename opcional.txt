@@ -1,0 +1,8 @@
+Se ha creado una nueva escena llamada "Game Over" a la que se va cuando se pierda.
+Además, esta nueva escena contiene un botón "RESTART GAME" para iniciar la escena "Game", un botón "RESTART PHYSGAME"
+para iniciar la escena "PhysGame" y un botón "EXIT" para cerrar la aplicación, aunque en el modo editor no sirve esta funcionalidad, 
+pero en caso de buildear el juego, cerraría el programa. Dichos botones son hijos de un Canvas.
+
+Para esta funcionalidad, se ha creado un script "GameOverScene.cs" asociado al objeto GameOver de la escena GameOver.
+
+También se ha creado en "LogicaLetra.cs" el comportamiento para que se creen números o letras (mayúsculas o minúsculas) de forma aleatoria.

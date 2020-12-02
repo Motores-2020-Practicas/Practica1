@@ -1,5 +1,0 @@
-Se ha creado una nueva escena llamada "Game Over" a la que se va cuando se pierda.
-Además, esta nueva escena contiene un botón "RESTART" para volver a comenzar el juego desde el comienzo.
-Para esto, se ha creado un script "Restart.cs" asociado al objeto Button del Canvas.
-
-También se ha creado en "LogicaLetra.cs" el comportamiento para que se creen números o letras (mayúsculas o minúsculas).
